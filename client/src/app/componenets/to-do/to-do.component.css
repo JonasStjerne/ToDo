@@ -1,0 +1,10 @@
+#todoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    cursor: pointer;
+    user-select: none;
+}

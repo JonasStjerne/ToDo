@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ToDoComponent implements OnInit {
 
   todoText: string = '';
-  todos = [{crossedOut: false, text: "test"}];
+  todos = [{id: 0, done: false, text: "test"}];
 
   addToDo(){
-    this.todos[this.todos.length] = {crossedOut: false, text: this.todoText}
+    this.todos.push({id: this.todos.length, done: false, text: this.todoText})
     this.todoText = "";
+  }
+
+  changeDone(id: any) {
+    this.todos[id].done =  !this.todos[id].done;
   }
 
   constructor() { }

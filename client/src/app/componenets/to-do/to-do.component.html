@@ -1,7 +1,11 @@
 
-<div>
-    <div id="todoes">
-        <p *ngFor="let todo of todos">{{todo.text}}</p>
+<div id="">
+    <div id="todoes" *ngFor="let todo of todos">
+        <del *ngIf="todo.done; else notDone"><a (click) = "changeDone(todo.id)"><p>{{todo.text}}</p></a></del>
+        <ng-template #notDone>
+            <a (click) = "changeDone(todo.id)"><p>{{todo.text}}</p></a>
+        </ng-template>
+        
     </div>
     <div id="newTodoes">
         <input [(ngModel)]="todoText" name="todoText" type="text" placeholder="New to do"> 
