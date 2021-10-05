@@ -1,0 +1,16 @@
+
+<div>
+    <div id="todoes">
+        <p *ngFor="let todo of todos">{{todo.text}}</p>
+    </div>
+    <div id="newTodoes">
+        <input [(ngModel)]="todoText" name="todoText" type="text" placeholder="New to do"> 
+        <button (click) = "addToDo()">Add</button>
+    </div>
+</div>
+
+
+  
+  
+  
+  
