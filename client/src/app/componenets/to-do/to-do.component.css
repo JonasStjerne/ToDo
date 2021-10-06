@@ -4,7 +4,48 @@
     align-items: center;
 }
 
-p {
+#todoes > * {
+    margin-bottom: 20px;
+}
+
+h3 {
     cursor: pointer;
     user-select: none;
+    margin-bottom: 0;
 }
+
+fa-icon {
+    visibility: hidden;
+    margin-left: 20px;
+    color: #707070;
+}
+
+fa-icon:hover {
+    color: #FF0080;
+}
+
+.todoLine:hover fa-icon {
+    visibility: visible;
+    cursor: pointer;
+}
+
+.todoLine {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.iconBtn {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+.btnText {
+    color: black;
+}
+
+#addBtn {
+    margin-left: 10px;
+}
+

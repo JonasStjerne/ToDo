@@ -1,15 +1,23 @@
 
 <div id="">
     <div id="todoes" *ngFor="let todo of todos">
-        <del *ngIf="todo.done; else notDone"><a (click) = "changeDone(todo.id)"><p>{{todo.text}}</p></a></del>
+        <div class="todoLine" *ngIf="todo.done; else notDone">
+            <del><a (click) = "changeDone(todo.id)"><h3>{{todo.text}}</h3></a></del><button (click)="deleteTodo(todo.id)" class="iconBtn"><fa-icon [icon]="faTrash"></fa-icon></button>
+        </div>
+        
         <ng-template #notDone>
-            <a (click) = "changeDone(todo.id)"><p>{{todo.text}}</p></a>
+            <div class="todoLine">
+                <a (click) = "changeDone(todo.id)"><h3>{{todo.text}}</h3></a><button (click)="deleteTodo(todo.id)" class="iconBtn"><fa-icon [icon]="faTrash"></fa-icon></button>
+            </div>
         </ng-template>
         
     </div>
     <div id="newTodoes">
-        <input [(ngModel)]="todoText" name="todoText" type="text" placeholder="New to do"> 
-        <button (click) = "addToDo()">Add</button>
+        <mat-form-field (keyup.enter)="addToDo()" appearance="fill">
+            <mat-label>Add to do</mat-label>
+            <input matInput [(ngModel)]="todoText" name="todoText" type="text" placeholder="Ex. Laundry"> 
+        </mat-form-field>
+        <!-- <button id="addBtn" mat-mini-fab style="background-color: #E5E5E5;" (click) = "addToDo()"><p class="btnText">Add</p></button> -->
     </div>
 </div>
 
