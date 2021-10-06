@@ -43,8 +43,6 @@ export class ToDoComponent implements OnInit {
     this.todos[id].done =  !this.todos[id].done;
   }
 
- 
-
   ngOnInit(): void {
     this.todos = this.getToDos();
   }
