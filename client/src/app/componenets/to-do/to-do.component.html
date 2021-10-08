@@ -1,13 +1,13 @@
 
 <div id="">
-    <div id="todoes" *ngFor="let todo of todos">
+    <div id="todoes" *ngFor="let todo of todos | async">
         <div class="todoLine" *ngIf="todo.done; else notDone">
-            <del><a (click) = "changeDone(todo.id)"><h3>{{todo.text}}</h3></a></del><button (click)="deleteTodo(todo.id)" class="iconBtn"><fa-icon [icon]="faTrash"></fa-icon></button>
+            <del><a><h3>{{todo.todoText | json}}</h3></a></del><button class="iconBtn"><fa-icon [icon]="faTrash"></fa-icon></button>
         </div>
         
         <ng-template #notDone>
             <div class="todoLine">
-                <a (click) = "changeDone(todo.id)"><h3>{{todo.text}}</h3></a><button (click)="deleteTodo(todo.id)" class="iconBtn"><fa-icon [icon]="faTrash"></fa-icon></button>
+                <a><h3>{{todo.todoText | json}}</h3></a><button class="iconBtn"><fa-icon [icon]="faTrash"></fa-icon></button>
             </div>
         </ng-template>
         
