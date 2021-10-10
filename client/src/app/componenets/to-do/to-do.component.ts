@@ -12,6 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class ToDoComponent implements OnInit {
   
+  //Api location and http format options
   readonly ROOT_URL = "http://localhost:56249/api/todos";
   private httpOptions = {
     headers: new HttpHeaders({
@@ -36,7 +37,6 @@ export class ToDoComponent implements OnInit {
     
     if(this.todoText !== "") {
       var data = JSON.stringify({id: Math.floor(Math.random() * 99999999), TodoText: this.todoText, Done: false});
-      console.log(data);
       this.todos = this.http.post(this.ROOT_URL, data, this.httpOptions);
     }
   this.todoText = "";

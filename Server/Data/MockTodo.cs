@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Server.Data
 {
-    public class MockTodo : ITodo
+    public class MockTodo
     {
+        //Mockdata
         public List<Todo> todos = new List<Todo>
         {
-            new Todo{id=21221, TodoText="vasketøj", Done=false},
-            new Todo{id=21232221, TodoText="gøre rent", Done=false},
-            new Todo{id=212434321, TodoText="rydde op", Done=false}
+            new Todo{Id=21221, TodoText="Vasketøj", Done=false},
+            new Todo{Id=21232221, TodoText="Gøre rent", Done=false},
+            new Todo{Id=212434321, TodoText="Rydde op", Done=false}
         };
 
         public IEnumerable<Todo> GetTodosItems()
@@ -20,11 +21,11 @@ namespace Server.Data
             return todos;
         }
 
-        public IEnumerable<Todo> DeleteTodoItem(int id)
+        public IEnumerable<Todo> DeleteTodoItem(int Id)
         {
             for (int i = 0; i < todos.Count; i++)
             {
-                if (todos[i].id == id)
+                if (todos[i].Id == Id)
                 {
                     todos.Remove(todos[i]);
                 }
@@ -34,23 +35,15 @@ namespace Server.Data
 
         public IEnumerable<Todo> AddTodoItem(Todo todoItem)
         {
-            Todo testTodo = new Todo {
-                        id=2020,
-                        TodoText = "Støvsugning",
-                        Done = false
-                };
-
             todos.Add(todoItem);
-
-            Console.WriteLine("Added to todos");
             return todos;
         }
 
-        public IEnumerable<Todo> ChangeStateTodoItem(int id)
+        public IEnumerable<Todo> ChangeStateTodoItem(int Id)
         {
             for (int i = 0; i < todos.Count; i++)
             {
-                if (todos[i].id == id)
+                if (todos[i].Id == Id)
                 {
                     todos[i].Done = !todos[i].Done;
                 }
