@@ -14,6 +14,7 @@ namespace Server
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,12 +27,15 @@ namespace Server
         {
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(
-                builder =>
-                {
-                    builder.WithOrigins("http://localhost:4200");
-                });
+                options.AddPolicy(MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:4200")
+                                                          .AllowAnyHeader()
+                                                          .AllowAnyMethod();
+                                  });
             });
+
             services.AddControllers();
         }
 
@@ -44,7 +48,7 @@ namespace Server
             }
 
             app.UseRouting();
-            app.UseCors();
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 

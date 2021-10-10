@@ -9,5 +9,6 @@ namespace Server.Data
     public interface ITodo
     {
         IEnumerable<Todo> GetTodosItems();
+        IEnumerable<Todo> AddTodoItem(Todo todoItem);
     }
 }

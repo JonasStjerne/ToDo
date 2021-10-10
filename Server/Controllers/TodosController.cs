@@ -12,11 +12,29 @@ namespace Server.Controllers
     [ApiController]
     public class TodosController : ControllerBase
     {
-        private readonly MockTodo _repository = new MockTodo();
+        private static MockTodo _repository = new MockTodo();
         [HttpGet]
-        public ActionResult <IEnumerable<Todo>> GetAllTodos()
+        public ActionResult<IEnumerable<Todo>> GetAllTodos()
         {
-            return Ok(_repository.GetTodosItems()); 
+            return Ok(_repository.GetTodosItems());
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<IEnumerable<Todo>> DeleteTodoById(int id)
+        {
+            return Ok(_repository.DeleteTodoItem(id));
+        }
+
+        [HttpPost]
+        public ActionResult<IEnumerable<Todo>> AddTodo(Todo todo)
+        {
+            return Ok(_repository.AddTodoItem(todo));
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Todo>> ChangeTodoStateById(int id)
+        {
+            return Ok(_repository.ChangeStateTodoItem(id));
         }
 
     }
