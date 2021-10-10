@@ -24,7 +24,7 @@ export class ToDoComponent implements OnInit {
 
   todos: any;
   
-  getTodos(): any {
+  getTodos() {
    this.todos = this.http.get(this.ROOT_URL);
   }
 
@@ -33,8 +33,7 @@ export class ToDoComponent implements OnInit {
 
   todoText: string = '';
   
-  addToDo(){
-    
+  addToDo(): void{
     if(this.todoText !== "") {
       var data = JSON.stringify({id: Math.floor(Math.random() * 99999999), TodoText: this.todoText, Done: false});
       this.todos = this.http.post(this.ROOT_URL, data, this.httpOptions);
@@ -42,11 +41,11 @@ export class ToDoComponent implements OnInit {
   this.todoText = "";
   }
 
-  deleteTodo(id: any) {
+  deleteTodo(id: Number): void {
     this.todos = this.http.delete(this.ROOT_URL + "/" + id);
   }
 
-  changeDone(id: any) {
+  changeDone(id: Number): void {
     this.todos = this.http.get(this.ROOT_URL + "/" + id);
   }
 
